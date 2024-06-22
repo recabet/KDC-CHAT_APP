@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/rooms.css">
+</head>
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <div class="rooms">
+        <% rooms.forEach(room => { %>
+
+            <div class="room">
+                <b class="room-title">
+                    <%= room.title %>
+                </b>
+                <a href="/chatroom/<%= room.id %>" class="room-a">Join room</a>
+            </div>
+
+        <% }); %>
+    </div>
+
+    <div class="create-room-div">
+        <a href="/create_room" class="create-room-a">Create a room</a>
+    </div>
+    
+</body>
+</html>

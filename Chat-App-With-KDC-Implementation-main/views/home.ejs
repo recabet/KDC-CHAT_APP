@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main>
+        <% if (logged_in) { %>
+            <h1 class="home-h1">Welcome to the Messaging System</h1>
+            <p class="home-p">
+                You have logged in successfully. 
+                Now you can enter a room and start chatting.
+            </p>
+            <a href="/rooms" class="home-a">See rooms</a>
+        <% } else { %>
+            <h1 class="home-h1">Welcome to the Messaging System</h1>
+            <p class="home-p">
+                To start chatting with other users, 
+                you need to login first.
+            </p>
+            <a href="/login" class="home-a">Login</a>
+        <% } %>
+    </main>
+</body>
+</html>

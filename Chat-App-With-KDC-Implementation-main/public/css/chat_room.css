@@ -1,0 +1,87 @@
+body{
+    background-color: darkgray;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(30%);
+    flex-direction: column;
+}
+
+.message-box{
+    width: 80%; 
+    height: 400px; 
+    overflow: auto; 
+    border: 2px solid black; 
+    padding: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    background-color: white;
+}
+
+.below{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    gap: 30px;
+    width: 80%;
+    flex-direction: column;
+}
+
+.message-input{
+    width: 70%;
+    height: 40px;
+    border-radius: 8px;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.send-message-div{
+    width: 100%;
+    gap: 20px;
+    display: flex;
+
+}
+.send-button{
+    width: 27%;
+    height: 40px;
+    background-color: darkgreen;
+    color: white;
+    border: 1px solid darkgreen;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.send-button:hover{
+    transform: scale(1.05);
+}
+
+.leave-button{
+    width: 40%;
+    height: 40px;
+    background-color: darkred;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid darkred;
+    transition: transform 0.3s;
+}
+
+.leave-button:hover{
+    transform: scale(1.05);
+}
+
+.message-div{
+    display: flex;
+    gap: 10px;
+}

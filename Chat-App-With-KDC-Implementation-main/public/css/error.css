@@ -1,0 +1,15 @@
+.error-header{
+    text-align: center;
+}
+
+.error-message
+{
+    text-align: center;
+}
+.error-div {
+    background-color: rgba(255, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    margin: 100px auto;
+}

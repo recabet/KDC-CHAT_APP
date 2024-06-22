@@ -1,0 +1,100 @@
+<%- include('includes/head.ejs') %>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js" integrity="sha512-VJ6+sp2E5rFQk05caiXXzQd1wBABpjEj1r5kMiLmGAAgwPItw1YpqsCCBtq8Yr1x6C49/mTpRdXtq8O2RcZhlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/css/chat_room.css">
+</head>
+<body>
+    <%- include('includes/navbar.ejs') %> 
+    
+    <main>
+        <div id="messages" class="message-box">
+            
+        </div>
+
+        <script src="/js/rsa.js"></script>
+        <script src="/js/caesar_cipher.js"></script>
+        <script>
+            const socket = io();
+
+            // Generate RSA key pair
+            const [publicKey, privateKey] = generateKeyPair();
+            let sessionKey; 
+            const roomId = '<%= room_id %>';
+
+            const username = '<%= user.username %>'
+
+            // Join a room with public key
+            socket.emit('joinRoom', { room: roomId, publicKey: publicKey, username: username });
+
+            // Receive encrypted session key
+            socket.on('encryptedSessionKey', (encryptedSessionKey) => {
+                // Decrypt session key with private key
+                sessionKey = JSON.parse(decrypt(privateKey, encryptedSessionKey));
+                console.log('Decrypted Session Key:', sessionKey);
+            });
+
+            // Receive messages
+            socket.on('message', ({message, username}) => {
+                console.log('Received an encrypted message:', message, "from", username);
+                const decryptedMessage = decipher(message, sessionKey);
+                document.getElementById('messages').innerHTML += `
+                <div class="message-div">
+                    <b class="username">${username} : </b>
+                    <div class="message">${decryptedMessage}</div>
+                </div>
+                `;
+            });
+
+            socket.on('joinLeaveMessage', (joinLeaveMessage) => {
+                document.getElementById('messages').innerHTML += `
+                <div class="message-div">
+                    <i>${joinLeaveMessage}</i>
+                </div>
+                `
+            }); 
+
+            
+            <% if (!delete_on_left) { %>
+                socket.on('hostLeftTheRoom', () => {
+                    window.location.href = '/host_left';
+                });
+            <% } %> 
+            
+
+            function sendMessageToServer(){
+                const message = document.getElementById('_message').value;
+                const encryptedMessage = cipher(message, sessionKey);
+                document.getElementById('_message').value = ''; 
+                socket.emit('sendMessage', { room: roomId, message: encryptedMessage, username: username});
+                console.log("Message sent to the room " + roomId);
+            }
+
+            function leaveTheRoom()
+            {
+                <% if (delete_on_left) { %>
+                    socket.emit('hostLeftTheRoom', roomId);
+                <% } else { %> 
+                    socket.emit('leaveRoom', {roomId: roomId, username: username});
+                <% } %> 
+
+                window.location.href = "/leaved_room"; 
+            }
+            
+
+        </script>
+
+        <div class="below">
+            <div class="send-message-div">
+                <input type="text" placeholder="Send message" id="_message" class="message-input">
+                <button type="button" onclick="sendMessageToServer()" class="send-button">Send</button>
+            </div>
+            <button type="button" onclick="leaveTheRoom()" class="leave-button">
+                Leave the room
+            </button>
+        </div>
+
+    </main>
+
+
+</body>
+</html>

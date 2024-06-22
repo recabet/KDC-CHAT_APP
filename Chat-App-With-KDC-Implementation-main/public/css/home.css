@@ -1,0 +1,32 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 450px;
+}
+
+.home-h1{
+    color: darkgreen;
+}
+p{
+    font-size: 20px;
+}
+
+.home-a{
+    margin-top: 20px;
+    width: 400px;
+    height: 50px;
+    background-color: darkgreen;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.home-a:hover{
+    transform: scale(1.05);
+}

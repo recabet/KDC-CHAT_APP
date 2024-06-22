@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main>
+        <div class="profile-div">
+            <h1 class="profile-header">Your profile</h1>
+            <div class="username-div">
+                <div class="username-label">Username : </div>
+                <div class="username"><%= user.username %></div>
+            </div>
+            <div class="password-div">
+                <div class="password-label">Password : </div>
+                <div class="password"><%= user.password %></div>
+            </div>
+    
+            <a class="logout" href="/logout">Log out</a>
+    
+        </div>
+    </main>
+
+</body>
+</html>

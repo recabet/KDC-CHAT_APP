@@ -1,0 +1,20 @@
+{
+  "name": "messaging-system-with-rsa-implementation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Javid Sadigli, Rajab Iskandarli, Fagan Fataliyev",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.7.5"
+  }
+}
