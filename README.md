@@ -13,7 +13,7 @@ This project is a real time chat application built with ExpressJS framework that
 
 
 ## Key Distribution Center
-![](Chat-App-With-KDC-Implementation-main/readme_images/kdc_schema.jpg)
+
 
 In cryptography, a Key Distribution Center (KDC) provides keys to users in a network sharing sensitive data. It is used in many network authentication protocols, particularly in the context of Kerberos, a widely used authentication protocol in computer networks.
 ### How KDC works? 
@@ -26,12 +26,10 @@ This process for encrypting and decrypting the session key is called the RSA alg
 * The session key is usually valid for a short time or for just one session. Once the session ends, the key is either discarded or marked as expired to maintain security.
 
 ## RSA (Rivest–Shamir–Adleman) algorithm
-![](Chat-App-With-KDC-Implementation-main/readme_images/rsa_image.png)
-
 The RSA encryption algorithm is widely used for securing data. It employs a pair of keys, public and private, which are mathematically linked. Data encrypted with public key can only be decrypted with the private key. This flexibility enables secure communication over networks. The sender encrypts data with the recipient's public key, ensuring only the recipient, with the corresponding private key, can decrypt it, even if intercepted during transit.
 
 ## Caesar Cipher 
-![](Chat-App-With-KDC-Implementation-main/readme_images/caesarcipher.png)
+
 
 Caesar Cipher is one of the simplest and most widely known encryption techniques. It's a substitution cipher where each letter in the plaintext is shifted a certain number of places down or up the alphabet. For example, with a shift of 3, 'A' would be replaced by 'D', 'B' would become 'E', and so on. The method is named after Julius Caesar, who allegedly used it to communicate with his generals.
 
